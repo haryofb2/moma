@@ -106,6 +106,7 @@
                             </tr>
                         </thead>
                         <tbody>
+                            @foreach ($event as $e)
                             <tr>
                                 <td>
                                     <a href="{{route('users.detailmember')}}"><img
@@ -113,18 +114,15 @@
                                             height="100" alt="">
                                     </a>
                                 </td>
-                                <td style="width:20px"><a href="{{route('event.detailevent')}}">Upcycle
-                                        pakaian lama jadi lebih
-                                        fashionableUpcycle
-                                        pakaian lama jadi lebih
-                                        fashionable</a></td>
-                                <td>Free</td>
-                                <td>Beauty</td>
-                                <td>via Zoom</td>
-                                <td>2021/04/21 14:00</td>
-                                <td>2021/04/21 15:30</td>
-                                <!-- <td>Rp. 0</td> -->
-                                <td>20</td>
+                                <td style="width:20px"><a href="{{route('event.detailevent')}}">{{$e->event_name}}</a>
+                                </td>
+                                <td>{{$e->eventtype->name}}</td>
+                                <td>{{$e->categoryevent->name}}</td>
+                                <td>{{$e->venue}}</td>
+                                <td>{{$e->start_date}}</td>
+                                <td>{{$e->end_date}}</td>
+                                <td></td>
+                                <td></td>
                                 <td style="text-align:center;"><label class="switch">
                                         <input type="checkbox" name="menu" id="menu">
                                         <span class="slider round"></span>
@@ -135,17 +133,20 @@
                                             href="{{route('event.rewardlist')}}"><i class="icon-star"
                                                 aria-hidden="true"></i></a>
                                     </button>
-                                    <button
+                                    <button href="{{route('event.edit')}}"
                                         class="btn btn-sm btn-icon btn-pure btn-default on-default m-r-5 button-edit"
                                         data-toggle="tooltip" data-original-title="Edit"><i class="icon-pencil"
                                             aria-hidden="true"></i></a>
-                                        <button
-                                            class="btn btn-sm btn-icon btn-pure btn-default on-default button-remove"
-                                            data-toggle="tooltip" data-original-title="Remove"><i class="icon-trash"
-                                                aria-hidden="true"></i></a>
+                                    </button>
+                                    <button href="{{route('event.delete')}}"
+                                        class="btn btn-sm btn-icon btn-pure btn-default on-default button-remove"
+                                        data-toggle="tooltip" data-original-title="Remove"><i class="icon-trash"
+                                            aria-hidden="true"></i></a>
+                                    </button>
                                 </td>
                             </tr>
-                            <tr>
+                            @endforeach
+                            {{-- <tr>
                                 <td>
                                     <a href="{{route('users.detailmember')}}"><img
                                             src="https://instagram.fcgk8-1.fna.fbcdn.net/v/t51.2885-15/e35/173106602_119378816846435_4864992829926309642_n.jpg?tp=1&_nc_ht=instagram.fcgk8-1.fna.fbcdn.net&_nc_cat=111&_nc_ohc=YKfVvtLpZvIAX_PRPFM&edm=AP_V10EAAAAA&ccb=7-4&oh=633121e6de1e23581e78162c54ae9d50&oe=60A21562&_nc_sid=4f375e"
@@ -182,7 +183,7 @@
                                             data-toggle="tooltip" data-original-title="Remove"><i class="icon-trash"
                                                 aria-hidden="true"></i></a>
                                 </td>
-                            </tr>
+                            </tr> --}}
                         </tbody>
                     </table>
                 </div>

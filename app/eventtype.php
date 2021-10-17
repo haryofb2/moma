@@ -3,21 +3,21 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
+// use Illuminate\Database\Eloquent\SoftDeletes;
 
 class eventtype extends Model
 {
     ////
 
-    use SoftDeletes;
+    // use SoftDeletes;
 
-    protected $table = 'events_type';
+    protected $table = 'event_type';
 
-    protected $primaryKey = 'events_type_id';
+    protected $primaryKey = 'event_type_id';
     
     protected $keyType = 'integer';
 
-    protected $dates = ['deleted_at'];
+    // protected $dates = ['deleted_at'];
 
     protected $guarded = [];
 

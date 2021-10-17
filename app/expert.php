@@ -3,13 +3,13 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
+// use Illuminate\Database\Eloquent\SoftDeletes;
 
 class expert extends Model
 {
     ////
 
-    use SoftDeletes;
+    // use SoftDeletes;
 
     protected $table = 'expert';
 
@@ -17,7 +17,7 @@ class expert extends Model
     
     protected $keyType = 'integer';
 
-    protected $dates = ['deleted_at'];
+    // protected $dates = ['deleted_at'];
 
     protected $guarded = [];
 

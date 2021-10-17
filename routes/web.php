@@ -50,6 +50,11 @@ Route::get('admin/event/category-event', 'EventController@category')->name('even
 Route::get('admin/event/detail', 'EventController@detail')->name('event.detailevent');
 Route::get('admin/event/rewardlist', 'EventController@reward')->name('event.rewardlist');
 
+Route::post('admin/event/new-data', 'EventController@store')->name('event.store');
+
+Route::delete('admin/event/{event_id}/delete', 'EventController@delete')->name('event.delete');
+
+
 /* Jobs */
 Route::get('admin/jobs', function () { return redirect('jobs/dashboard'); });
 Route::get('admin/jobs/dashboard', 'JobController@dashboard')->name('jobs.dashboard');

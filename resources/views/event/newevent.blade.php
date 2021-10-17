@@ -10,89 +10,97 @@
     <div class="col-lg-12">
         <div class="card">
             <div class="body">
+                <form method="post" action="{{route('event.store')}}">
+                    {{ csrf_field() }}
+                    {{-- <input type="hidden" name="event_id" id="event_id"> --}}
+                    <div class="form-group">
+                        <label>Poster Event<br><small>try to upload file larger than 100 KB</small></label>
 
-                <div class="form-group">
-                    <label>Poster Event<br><small>try to upload file larger than 100 KB</small></label>
 
-
-                    <div class="body">
-                        <input type="file" class="dropify" data-max-file-size="100K">
+                        <div class="body">
+                            <input type="file" class="dropify" data-max-file-size="100K" name="image" value="">
+                        </div>
                     </div>
-                </div>
-                <div class="form-group">
-                    <label>Event Name</label>
-                    <input type="text" class="form-control" placeholder="Enter Event Name" />
-                </div>
-                <div class="form-group">
-                    <label>Category Event</label>
-                    <select class="form-control show-tick">
-                        <option>Select Category</option>
-                        <option>Beauty</option>
-                        <option>Life</option>
-                    </select>
-                </div>
-                <div class="form-group row">
-                    <div class="col-6">
-                        <label>Event Type</label>
-                        <select class="form-control show-tick">
-                            <option>Select Event Type</option>
-                            <option>Free</option>
-                            <option>Premium</option>
+                    <div class="form-group">
+                        <label>Event Name</label>
+                        <input type="text" class="form-control" placeholder="Enter Event Name" name="event_name"
+                            value="" />
+                    </div>
+                    <div class="form-group">
+                        <label>Category Event</label>
+                        <select class="form-control show-tick" name="category_event_id">
+                            <option value="">Select Category</option>
+                            @foreach ($category_event as $ce)
+                            <option value="{{$ce->category_event_id}}">{{$ce->category_event_name}}</option>
+                            @endforeach
                         </select>
                     </div>
-                    <div class="col-6">
-                        <label>Price (Rp.)</label>
-                        <input type="text" class="form-control" placeholder="Enter Price Venue" />
+                    <div class="form-group row">
+                        <div class="col-6">
+                            <label>Event Type</label>
+                            <select class="form-control show-tick" name="event_type_id">
+                                <option value="">Select Event Type</option>
+                                @foreach ($event_type as $et)
+                                <option value="{{$et->event_type_id}}">{{$et->event_type_name}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="col-6">
+                            <label>Price (Rp.)</label>
+                            <input type="text" class="form-control" placeholder="Enter Price Venue" name="price"
+                                value="" />
 
+                        </div>
                     </div>
-                </div>
-                <div class="form-group">
-                    <label>Event Venue</label>
-                    <input type="text" class="form-control" placeholder="Enter Event Venue" />
-                </div>
-                <div class="form-group">
-                    <label>Narasumber</label>
-                    <select class="form-control show-tick">
-                        <option>Select Narasumber</option>
-                        <option>Expert 1</option>
-                        <option>Expert 2</option>
-                        <option>Expert 3</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label>Reward Event</label>
-                    <select class="form-control show-tick">
-                        <option>Select Reward Event</option>
-                        <option>No</option>
-                        <option>Gopay</option>
-                        <option>Merchandise</option>
-                    </select>
-                </div>
-                <div class="form-group row">
-                    <div class="col-6">
-                        <label>Start Date</label>
-                        <input type="datetime-local" class="form-control" placeholder="Enter Event Venue" />
+                    <div class="form-group">
+                        <label>Event Venue</label>
+                        <input type="text" class="form-control" placeholder="Enter Event Venue" name="venue" value="" />
+                    </div>
+                    <div class="form-group">
+                        <label>Narasumber</label>
+                        <select class="form-control show-tick" name="speaker" value="">
+                            <option>Select Narasumber</option>
+                            @foreach ($speaker as $s)
+                            <option value="{{$s->speaker_id}}">{{$s->speaker_name}}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Reward Event</label>
+                        <select class="form-control show-tick" name="reward_event_id">
+                            <option>Select Reward Event</option>
+                            @foreach ($reward_event as $re)
+                            <option value="{{$re->reward_event_id}}">{{$re->reward_event_name}}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-6">
+                            <label>Start Date</label>
+                            <input type="datetime-local" class="form-control" placeholder="Enter Event Venue"
+                                name="start_date" value="" />
 
+                        </div>
+                        <div class="col-lg-6">
+                            <label>End Date </label>
+                            <input type="datetime-local" class="form-control" placeholder="Enter Event Venue"
+                                name="end_date" value="" />
+                        </div>
                     </div>
-                    <div class="col-lg-6">
-                        <label>End Date </label>
-                        <input type="datetime-local" class="form-control" placeholder="Enter Event Venue" />
-                    </div>
-                </div>
 
-                <!-- <div class="form-group m-t-20 m-b-20">
+                    <!-- <div class="form-group m-t-20 m-b-20">
                     <label>Poster Event</label>
                     <input type="file" class="form-control-file" id="exampleInputFile" aria-describedby="fileHelp">
                     <<small id="fileHelp" class="form-text text-muted">This is some placeholder block-level help text for 
                 the above input. It's a bit lighter and easily wraps to a new line.</small> 
-            </div> -->
-                <label>Description Event</label>
-                <div class="summernote">
-                    <!-- <h3 class="m-b-0">hi,</h3>
+                </div> -->
+                    <label>Description Event</label>
+                    <div class="summernote">
+                        <!-- <h3 class="m-b-0">hi,</h3>
                     <h4 class="m-t-0">we are Summernote</h4> -->
-                    <p></p>
-                </div>
-                <button type="button" class="btn btn-block btn-primary   m-t-20">Post</button>
+                        {{-- <p></p> --}}
+                    </div>
+                    <button type="submit" class="btn btn-block btn-primary   m-t-20">CREATE</button>
             </div>
         </div>
     </div>
@@ -101,7 +109,8 @@
 @stop
 
 @section('page-script')
-jQuery(document).ready(function() {
+<script>
+    jQuery(document).ready(function() {
 
 $('.summernote').summernote({
 height: 350, // set editor height
@@ -124,5 +133,7 @@ $(".click2edit").summernote()
 window.save = function() {
 $(".click2edit").summernote('destroy');
 }
+</script>
+
 
 @stop
