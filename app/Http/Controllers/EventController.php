@@ -55,9 +55,12 @@ class EventController extends BaseController
         // $rewardevent = rewardevent::all();
         // $categoryevent = categoryevent::all();
         // $expert = expert::all();
-
+        $event_type = eventtype::all();
+        $reward_event = rewardevent::all();
+        $category_event = categoryevent::all();
+        $speaker = expert::all();
         $event = Event::with(['expert','categoryevent','rewardevent','eventtype'])->get();
-        return view('event.eventlist',compact('event'));
+        return view('event.eventlist',compact('event','event_type','reward_event','category_event','speaker'));
 
     	// return view('event.eventlist');
     }
@@ -105,6 +108,46 @@ class EventController extends BaseController
         return redirect('/admin/event/list-event');
     }   
 
+    public function edit($event_id){
+        $event = Event::with(['expert','categoryevent','rewardevent','eventtype'])->where('event_id' == $event_id)->first();
+
+        return view('event.editevent',compact('event'));
+
+        // $where =array('kd_company'=>$event_id);
+        // $event = Event::with(['expert','categoryevent','rewardevent','eventtype'])->where($where)->first();
+
+
+        // return response()->json($event);
+    }
+
+    public function update(Request $request)
+    {
+        $details = [
+            // 'kd_company' => helpers::mkeyHelpers('m_company'),
+            'event_name' => $request->event_name,
+            'category_event_id' => $request->category_event_id,
+            'event_type' => $request->event_type_id,
+            'price' => $request->price,
+            'venue' => $request->venue,
+            'speaker' => $request->speaker,
+            'reward_event_id' => $request->reward_event,
+            'start_date' => $request->start_date,
+            'end_date' => $request->end_date,
+            'content' => $request->content,
+            
+        ];
+
+        if ($files = $request->file('image')) {
+            $profileImage =  date('YmdHis') . "." . $files->getClientOriginalExtension();
+            $files->move(public_path('img/upload/m_company/'), $profileImage);
+            $details['image'] = $profileImage;
+        }
+
+
+        Event::where('event_id','=', $request->event_id)->update($details);
+
+        return redirect('/admin/event/list-event');
+    }
     
     function category(){
     	return view('event.category');
