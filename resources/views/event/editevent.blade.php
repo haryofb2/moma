@@ -107,11 +107,7 @@
                 the above input. It's a bit lighter and easily wraps to a new line.</small> 
                 </div> -->
                     <label>Description Event</label>
-                    <div class="summernote">
-                        <!-- <h3 class="m-b-0">hi,</h3>
-                    <h4 class="m-t-0">we are Summernote</h4> -->
-                        {{-- <p></p> --}}
-                    </div>
+                    <textarea name="content" class="summernote">{{$event->content}}</textarea>
                     <button type="submit" class="btn btn-block btn-primary   m-t-20">CREATE</button>
             </div>
         </div>
