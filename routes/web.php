@@ -84,6 +84,10 @@ Route::get('admin/courses/list-course', 'CourseController@list')->name('courses.
 Route::get('admin/courses/category-course', 'CourseController@category')->name('courses.category');
 Route::get('admin/courses/detail', 'CourseController@detail')->name('courses.detailcourse');
 
+Route::post('admin/course/new-data', 'CourseController@store')->name('course.store');
+Route::delete('admin/course/{course_id}/delete', 'CourseController@delete')->name('course.delete');
+
+
 /* File Manager */
 Route::get('file-manager', function () { return redirect('file-manager/dashboard'); });
 Route::get('file-manager/dashboard', 'FileManagerController@dashboard')->name('file-manager.dashboard');
