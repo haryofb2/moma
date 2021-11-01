@@ -1,12 +1,86 @@
+@extends('layout.authentication')
+
 @extends('layouts.app')
 
-@section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Register') }}</div>
+@section('title', 'Register')
 
+
+@section('content')
+
+<div class="vertical-align-wrap">
+    <div class="vertical-align-middle auth-main">
+        <div class="auth-box">
+            <div class="top">
+                <img src="{{url('/')}}/assets/img/logo_mom.png" alt="MOMAcademy">
+            </div>
+            <div class="card">
+                <div class="header">
+                    <p class="lead">Create an account</p>
+                </div>
+                {{-- <div class="body">
+                    <form class="form-auth-small" method="POST" action="{{ route('register') }}">
+                        @csrf
+                        <div class="form-group">
+                            <label for="signup-email" class="control-label sr-only">name</label>
+                            <input type="text" class="form-control" name="name" id="signup-email"
+                                placeholder="Your name">
+                        </div>
+                        <div class="form-group">
+                            <label for="signup-email" class="control-label sr-only">Email</label>
+                            <input type="email" class="form-control" name="email" id="signup-email"
+                                placeholder="Your email">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="signup-password" class="control-label sr-only">Password</label>
+                            <input id="password" type="password"
+                                class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password"
+                                required>
+                        </div>
+                        <div class="form-group">
+                            <label for="name" class="col-sm-12 control-label">role</label>
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <div class="form-check">
+                                            <input class="form-check-input rbstatus" type="radio" name="role_id"
+                                                id="role_id1" value="1">
+                                            <label class="form-check-label" for="status_wp1">
+                                                1
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-check">
+                                            <input class="form-check-input rbstatus" type="radio" name="role_id"
+                                                id="role_id2" value="2">
+                                            <label class="form-check-label" for="status_wp2">
+                                                2
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group row mb-0">
+                            <div class="col-md-6 offset-md-4">
+                                <button type="submit" class="btn btn-primary">
+                                    {{ __('Register') }}
+                                </button>
+                            </div>
+                        </div>
+                        <div class="bottom">
+                            <span class="helper-text">Already have an account?
+                                <a href="{{route('login')}}">Login</a></span>
+                        </div>
+                    </form>
+                    <!-- <div class="separator-linethrough"><span>OR</span></div>
+                    <button class="btn btn-signin-social"><i class="fa fa-facebook-official facebook-color"></i> Sign in
+                        with Facebook</button>
+                    <button class="btn btn-signin-social"><i class="fa fa-twitter twitter-color"></i> Sign in with
+                        Twitter</button> -->
+                </div> --}}
                 <div class="card-body">
                     <form method="POST" action="{{ route('register') }}">
                         @csrf
@@ -47,8 +121,25 @@
                         <div class="form-group row">
                             <label for="email" class="col-md-4 col-form-label text-md-right">Role</label>
 
-                            <div class="col-md-6">
-                                <input id="role_id" type="text" class="form-control" name="role_id" required>
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="form-check">
+                                        <input class="form-check-input rbstatus" type="radio" name="role_id"
+                                            id="role_id1" value="1">
+                                        <label class="form-check-label" for="status_wp1">
+                                            1
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-check">
+                                        <input class="form-check-input rbstatus" type="radio" name="role_id"
+                                            id="role_id2" value="2">
+                                        <label class="form-check-label" for="status_wp2">
+                                            2
+                                        </label>
+                                    </div>
+                                </div>
                             </div>
                         </div>
 
@@ -92,4 +183,5 @@
         </div>
     </div>
 </div>
-@endsection
+
+@stop
