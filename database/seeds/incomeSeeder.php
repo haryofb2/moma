@@ -15,7 +15,7 @@ class incomeSeeder extends Seeder
         {
             $data = [
                 [
-                    'f' => '< 3jt',
+                    'income' => '< 3jt',
                 ],
                 [
                     'income' => '> 3 - 5jt',
